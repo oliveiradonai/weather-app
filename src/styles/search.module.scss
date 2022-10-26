@@ -1,0 +1,57 @@
+.searchLocation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 50px;
+}
+
+.css-1s2u09g-control,
+.css-1pahdxg-control {
+    color: #000000 !important;
+    background-color: rgba(255, 255, 255, 0.438) !important;
+}
+
+.css-14el2xx-placeholder {
+    color: #000000 !important;
+}
+
+#react-select-3-listbox {
+    background-color: rgba(255, 255, 255, 0.904) !important;
+}
+
+.css-319lph-ValueContainer {
+    cursor: text !important;
+}
+
+.css-b62m3t-container {
+    font-family: 'Raleway';
+    color: black;
+    padding: 5.5px;
+    font-size: 1.2rem;
+    border: none;
+    width: 500px;
+    border-radius: 5px;
+    text-align: center;
+    cursor: text !important;
+}
+
+button {
+    margin-left: 5px;
+    padding: 6px 10px;
+    background: #ddd;
+    font-size: 1.3rem;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 24px;
+}
+
+button:hover {
+    background: #ccc;
+}

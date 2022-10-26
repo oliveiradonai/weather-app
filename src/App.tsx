@@ -1,7 +1,9 @@
 import { useFetch } from "./hooks/useFetch";
 import '../src/styles/global.scss';
-import { Loading } from "./components/loading";
-import { Weather } from "./components/weather";
+import { Footer } from "./components/Footer";
+import { Loading } from "./components/Loading";
+import { Weather } from "./components/Weather";
+import { Search } from "./components/Search";
 
 interface WeatherData {
   name: string;
@@ -24,13 +26,14 @@ function App() {
 
   return (
     <div>
+      <Search></Search>
       {error ? <div>ERRO</div> : null}
       {loading ? 
         <Loading></Loading>
         : 
         <Weather props={weather}></Weather>
       }
-      
+      <Footer></Footer>
     </div>
   )
 

@@ -1,4 +1,4 @@
-.weatherLocation{
+.weatherLocation {
     font-size: 1.5rem;
     letter-spacing: 5px;
     display: flex;
@@ -6,8 +6,21 @@
     justify-content: center;
 }
 
-.weatherData{
+.weatherData {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+
+    h2 {
+        font-family: 'Ubuntu', sans-serif;
+        font-size: 4rem;
+    }
+
+    h3 {
+        margin-top: 15px;
+        font-family: 'Raleway', sans-serif;
+        font-size: 1.4rem;
+        text-align: center;
+    }
 }

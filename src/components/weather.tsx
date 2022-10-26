@@ -11,12 +11,16 @@ export function Weather(props: any) {
             </div>
 
             <div className={styles.weatherData}>
-                <h2>
-                    {weather?.main.temp}°C
-                </h2>
-                <h3>
-                    {weather?.weather[0].description.charAt(0).toUpperCase()}{weather?.weather[0].description.slice(1)}
-                </h3>
+                <div>
+                    <h2>
+                        {weather?.main.temp}°C
+                    </h2>
+                </div>
+                <div>
+                    <h3>
+                        {weather?.weather[0].description.charAt(0).toUpperCase()}{weather?.weather[0].description.slice(1)}
+                    </h3>
+                </div>
             </div>
         </>
     )
