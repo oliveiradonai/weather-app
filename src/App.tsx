@@ -1,5 +1,5 @@
 import { useFetch } from "./hooks/useFetch";
-import '../src/styles/global.scss';
+import '../src/styles/global.css';
 import { Footer } from "./components/Footer";
 import { Loading } from "./components/Loading";
 import { Weather } from "./components/Weather";

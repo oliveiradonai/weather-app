@@ -1,8 +1,8 @@
-import styles from '../styles/loading.module.scss';
+import '../styles/loading.css';
 
 export function Loading() {
     return (
-        <div className={styles.loadingOverlay}>
+        <div className="loadingOverlay">
             <h1>Carregando...</h1>
         </div>
     )

@@ -1,19 +1,19 @@
-import styles from '../styles/weather.module.scss';
+import '../styles/weather.css';
 
 export function Weather(props: any) {
-    const weather = props.props;
+    const weather = props;
     return (
         <>
-            <div className={styles.weatherLocation}>
+            <div className="weatherLocation">
                 <h1>
                     {weather?.name.toUpperCase()}, {weather?.sys.country}
                 </h1>
             </div>
 
-            <div className={styles.weatherData}>
+            <div className="weatherData">
                 <div>
                     <h2>
-                        {weather?.main.temp}°C
+                        {Math.floor(weather?.main.temp)}°C
                     </h2>
                 </div>
                 <div>
