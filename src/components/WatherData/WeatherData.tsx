@@ -1,9 +1,10 @@
-import '../styles/weather.css';
+import { Container, Logo } from './styles';
 
 export function Weather(props: any) {
-    const weather = props;
+    const weather = props.props;
+    
     return (
-        <>
+        <Container>
             <div className="weatherLocation">
                 <h1>
                     {weather?.name.toUpperCase()}, {weather?.sys.country}
@@ -12,6 +13,9 @@ export function Weather(props: any) {
 
             <div className="weatherData">
                 <div>
+                    <Logo 
+                        weatherType={weather?.weather[0].main}
+                    />
                     <h2>
                         {Math.floor(weather?.main.temp)}°C
                     </h2>
@@ -22,6 +26,6 @@ export function Weather(props: any) {
                     </h3>
                 </div>
             </div>
-        </>
+        </Container>
     )
 }

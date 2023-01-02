@@ -1,9 +1,9 @@
-import '../styles/search.css';
 import Select from 'react-select';
-import localesArchive from '../data/localidades.json';
+import localesArchive from '../../data/localidades.json';
 import { debounce, } from 'lodash';
-import { formatString } from '../Utils/format';
+import { formatString } from '../../Utils/format';
 import { useEffect, useState } from 'react';
+import { Container } from './styles';
 
 interface CitiesSelect {
     value: number;
@@ -38,14 +38,13 @@ export function Search(props: any) {
     function returnCities(cities: Cities[]) {
         const objectCities: CitiesSelect[] = [];
 
-        cities.find(city => {
+        cities.map(city => {
             const cityName = formatString(city.label)
             if (cityName.indexOf(inputText) > -1)
                 objectCities.push({
                     value: city.value,
                     label: `${city.label} - ${city.country}`
                 });
-                
             return objectCities;
         })
 
@@ -53,21 +52,19 @@ export function Search(props: any) {
     }
 
     useEffect(() => {
-        if (inputText)
-            returnCities(locales);
+        if (inputText !== "" || inputText !== undefined) { }
+        returnCities(locales);
     }, [inputText]);
 
     return (
-        <>
-            <div className="searchLocation">
-                <Select
-                    placeholder="Selecione uma localidade..."
-                    options={cities}
-                    onInputChange={search}
-                    id="select-city"
-                    // onChange={(evento) => apiCall(evento.value)}
-                />
-            </div>
-        </>
+        <Container>
+            <Select
+                placeholder="Selecione uma localidade..."
+                options={cities}
+                onInputChange={search}
+                id="select-city"
+            // onChange={(evento) => apiCall(evento.value)}
+            />
+        </Container>
     )
 }

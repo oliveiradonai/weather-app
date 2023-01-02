@@ -19,7 +19,7 @@ export function useFetch<T = unknown>(url: string | undefined) {
                 setError(error);
                 setLoading(false);
             });
-    }, [apiSecret, url]);
+    }, [url]);
 
     return { data, loading, error };
 }

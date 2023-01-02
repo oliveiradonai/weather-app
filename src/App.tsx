@@ -1,21 +1,27 @@
 import { useFetch } from "./hooks/useFetch";
-import '../src/styles/global.css';
-import { Footer } from "./components/Footer";
-import { Loading } from "./components/Loading";
-import { Weather } from "./components/Weather";
-import { Search } from "./components/Search";
+import { Container, GlobalStyle } from "./styles/global";
+import { Footer } from "./components/Footer/Footer";
+import { Loading } from "./components/Loading/Loading";
+import { Weather } from "./components/WatherData/WeatherData";
+import { Search } from "./components/Search/Search";
 
 interface WeatherData {
   name: string;
   main: Main
+  weather: Weather[];
 }
 interface Main {
-  temp:       number;
+  temp: number;
   feels_like: number;
-  temp_min:   number;
-  temp_max:   number;
-  pressure:   number;
-  humidity:   number;
+  temp_min: number;
+  temp_max: number;
+  pressure: number;
+  humidity: number;
+}
+
+interface Weather {
+  id: number;
+  main: string;
 }
 
 function App() {
@@ -25,16 +31,19 @@ function App() {
   const { data: weather, loading, error } = useFetch<WeatherData>(`${baseUrl}/?id=${cityCode}&units=metric&lang=pt_br`);
 
   return (
-    <div>
-      <Search></Search>
+    <Container
+      weatherType={weather?.weather[0].main}
+    >
+      <Search />
       {error ? <div>ERRO</div> : null}
-      {loading ? 
-        <Loading></Loading>
-        : 
-        <Weather props={weather}></Weather>
+      {loading ?
+        <Loading />
+        :
+        <Weather props={weather} />
       }
-      <Footer></Footer>
-    </div>
+      <Footer />
+      <GlobalStyle />
+    </Container>
   )
 
 }
