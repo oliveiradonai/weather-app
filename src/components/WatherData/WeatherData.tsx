@@ -1,13 +1,20 @@
+import { ApiWeatherData } from '../../types/weatherTypes';
 import { Container, Logo } from './styles';
 
-export function Weather(props: any) {
-    const weather = props.props;
+interface WeatherData {
+    weather: ApiWeatherData | undefined
+}
+
+export function Weather({ weather }: WeatherData) {    
+    const cityName = weather?.name ? weather.name : "";
+    const country = weather?.sys.country;
+    const temperature = weather?.main.temp ? weather?.main.temp : 0;
     
     return (
         <Container>
             <div className="weatherLocation">
                 <h1>
-                    {weather?.name.toUpperCase()}, {weather?.sys.country}
+                    {weather?.name ? `${cityName.toUpperCase()}, ${country}` : 'PESQUISE UMA LOCALIDADE'}                    
                 </h1>
             </div>
 
@@ -17,7 +24,7 @@ export function Weather(props: any) {
                         weatherType={weather?.weather[0].main}
                     />
                     <h2>
-                        {Math.floor(weather?.main.temp)}°C
+                        {Math.floor(temperature)}°C
                     </h2>
                 </div>
                 <div>

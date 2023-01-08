@@ -19,10 +19,11 @@ export const GlobalStyle = createGlobalStyle`
 
     body{
         color: #ffff;
-        background-color: #ffff;
+        background-image: url(${Default});
+        background-size: cover;
     }
 
-    body::after{
+    /* body::after{
         content: '';
         position: absolute;
         left: 0;
@@ -32,7 +33,7 @@ export const GlobalStyle = createGlobalStyle`
         background-color: rgba(0, 0, 0, 0.671);
         opacity: .5;
         z-index: -1;
-    }
+    } */
 
     @media (max-width: 1080px) {
         html{

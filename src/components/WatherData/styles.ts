@@ -53,7 +53,7 @@ export const Container = styled.div`
 `
 
 interface LogoProps {
-    weatherType: string;
+    weatherType?: string;
 }
 
 export const Logo = styled.image<LogoProps>`

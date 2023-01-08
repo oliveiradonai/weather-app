@@ -4,27 +4,14 @@ import { debounce, } from 'lodash';
 import { formatString } from '../../Utils/format';
 import { useEffect, useState } from 'react';
 import { Container } from './styles';
+import { Cities, CitiesSelect } from '../../types/searchTypes';
 
-interface CitiesSelect {
-    value: number;
-    label: string;
+interface SearchData {
+    setCityCode: React.Dispatch<React.SetStateAction<number | undefined>>;
 }
 
-interface Cities {
-    value: number;
-    label: string;
-    state: string;
-    country: string;
-    coord: Coord;
-}
-
-interface Coord {
-    lon: number;
-    lat: number;
-}
-
-export function Search(props: any) {
-    const [inputText, setInputText] = useState(null);
+export function Search({ setCityCode }: SearchData) {
+    const [inputText, setInputText] = useState("");
     const [cities, setCities] = useState<CitiesSelect[] | []>([]);
     const locales = (localesArchive as Array<Cities>);
 
@@ -52,8 +39,9 @@ export function Search(props: any) {
     }
 
     useEffect(() => {
-        if (inputText !== "" || inputText !== undefined) { }
-        returnCities(locales);
+        if (inputText.length > 0) {
+            returnCities(locales);
+        }
     }, [inputText]);
 
     return (
@@ -63,7 +51,7 @@ export function Search(props: any) {
                 options={cities}
                 onInputChange={search}
                 id="select-city"
-            // onChange={(evento) => apiCall(evento.value)}
+                onChange={(evento) => setCityCode(evento?.value)}
             />
         </Container>
     )

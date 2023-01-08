@@ -1,12 +1,18 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { ApiWeatherData } from "../types/weatherTypes";
 
-export function useFetch<T = unknown>(url: string | undefined) {
+interface UseFetchData {
+    cityCode: number | undefined;
+    setLoading: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export function useFetch ({ cityCode, setLoading }: UseFetchData) {
+    const baseUrl = process.env.REACT_APP_API_BASE_URL;
     const apiSecret = process.env.REACT_APP_API_SECRET;
+    const url = `${baseUrl}/?id=${cityCode}&units=metric&lang=pt_br`
 
-    const [data, setData] = useState<T>();
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState<Error | null>(null);
+    const [data, setData] = useState<ApiWeatherData>();
 
     useEffect(() => {
         setLoading(true);
@@ -16,10 +22,9 @@ export function useFetch<T = unknown>(url: string | undefined) {
                 setLoading(false);
             })
             .catch(error => {
-                setError(error);
                 setLoading(false);
             });
     }, [url]);
 
-    return { data, loading, error };
+    return data;
 }
