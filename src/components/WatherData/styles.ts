@@ -50,6 +50,17 @@ export const Container = styled.div`
             }
         }
     }
+
+    @media only screen and (max-width: 768px) {
+        padding: 1rem;
+
+        div {
+            &.weatherLocation {
+                text-align: center;
+                font-size: .9rem;
+            }
+    }
+    }
 `
 
 interface LogoProps {
@@ -57,31 +68,35 @@ interface LogoProps {
 }
 
 export const Logo = styled.image<LogoProps>`
-    ${props => 
+    ${props =>
         props.weatherType === "Clouds" ?
             `content: url(${Clouds})`
-        :
-        props.weatherType === "Thunderstorm" ?
-            `content: url(${Thunderstorm})`
-        :
-        props.weatherType === "Drizzle" ?
-            `content: url(${Drizzle})`
-        :
-        props.weatherType === "Rain" ?
-            `content: url(${Rain})`
-        :
-        props.weatherType === "Snow" ?
-            `content: url(${Snow})`
-        :
-        props.weatherType === "Mist" ?
-            `content: url(${Mist})`
-        :
-        props.weatherType === "Clear" ?
-            `content: url(${Clear})`
-        :
-            `content: url(${Default})`
+            :
+            props.weatherType === "Thunderstorm" ?
+                `content: url(${Thunderstorm})`
+                :
+                props.weatherType === "Drizzle" ?
+                    `content: url(${Drizzle})`
+                    :
+                    props.weatherType === "Rain" ?
+                        `content: url(${Rain})`
+                        :
+                        props.weatherType === "Snow" ?
+                            `content: url(${Snow})`
+                            :
+                            props.weatherType === "Mist" ?
+                                `content: url(${Mist})`
+                                :
+                                props.weatherType === "Clear" ?
+                                    `content: url(${Clear})`
+                                    :
+                                    `content: url(${Default})`
     };
 
     height: 90px;
     margin-right: 10px;
+
+    @media only screen and (max-width: 768px) {
+        height: 50px;
+    }
 `

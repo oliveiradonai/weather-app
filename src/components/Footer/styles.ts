@@ -12,6 +12,6 @@ export const Container = styled.div`
         font-family: 'Roboto', sans-serif;
         font-size: 1rem;
         color: #000000 !important;
-        margin: 0.5rem;
+        padding: 0.5rem;
     }
 `

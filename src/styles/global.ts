@@ -23,18 +23,6 @@ export const GlobalStyle = createGlobalStyle`
         background-size: cover;
     }
 
-    /* body::after{
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 0;
-        height: 100%;
-        width: 100%;
-        background-color: rgba(0, 0, 0, 0.671);
-        opacity: .5;
-        z-index: -1;
-    } */
-
     @media (max-width: 1080px) {
         html{
             font-size: 93.75%;
@@ -91,6 +79,7 @@ export const Container = styled.div<ContainerProps>`
             `background-image: url(${Default})`
     };
     background-size: cover;
+    background-position: center;
     width: 100vw;
     height: 100vh;
 `
