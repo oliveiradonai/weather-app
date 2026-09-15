@@ -1,5 +1,3 @@
-export function formatString(prop: any) {
-    const textOut = prop.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
-
-    return textOut;
+export function formatString(value: string) {
+  return value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 }

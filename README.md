@@ -1,46 +1,32 @@
-# Getting Started with Create React App
+# Weather App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A Next.js + React weather dashboard inspired by the Windows Weather app. It uses OpenWeather's free Current Weather and 5 day / 3 hour Forecast APIs through a server-side route handler, native `fetch`, Tailwind CSS, and local weather imagery.
 
-## Available Scripts
+## Setup
 
-In the project directory, you can run:
+Create `.env.local` in the project root:
 
-### `yarn start`
+```env
+OPENWEATHER_API_KEY=your_openweather_key
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Optional:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```env
+OPENWEATHER_BASE_URL=https://api.openweathermap.org/data/2.5
+```
 
-### `yarn test`
+The route handler calls the free OpenWeather 2.5 `/weather` and `/forecast` endpoints by latitude and longitude. Keeping the API call server-side avoids exposing the key in browser JavaScript.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Scripts
 
-### `yarn build`
+```bash
+bun install
+bun run dev
+bun run build
+bun run preview
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Notes
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+The free forecast endpoint returns data every 3 hours for up to 5 days, so the daily forecast cards are derived from those 3-hour entries. UV index, dew point, and official weather alerts require paid One Call data and will show `--` when unavailable.
